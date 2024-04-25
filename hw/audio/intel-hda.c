@@ -454,6 +454,7 @@ static bool intel_hda_xfer(HDACodecDevice *dev, uint32_t stnr, bool output,
     if (d->dp_lbase & 0x01) {
         s = st - d->st;
         addr = intel_hda_addr(d->dp_lbase & ~0x01, d->dp_ubase);
+        printf("DMA ADDR: 0x%x\n",addr);
         stl_le_pci_dma(&d->pci, addr + 8 * s, st->lpib, attrs);
     }
     dprint(d, 3, "dma: --\n");
